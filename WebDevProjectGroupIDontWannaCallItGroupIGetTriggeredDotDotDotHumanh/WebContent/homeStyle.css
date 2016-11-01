@@ -1,0 +1,91 @@
+body {
+	
+	background-color: red;
+	text-align: center;
+	color: white;
+	
+	background-image: url("home_another.png");
+ 	/* background-repeat: no-repeat; */
+ 	/*background-color: #FAFAFA;*/
+ 	background-position: center 400px; 
+ 	background-attachment: fixed;
+ 	border-top: 20px;
+ 	/*height: 407px;
+ 	width: 600px; */
+ 	background-repeat: no-repeat;
+ 	
+ 	border-top:10px;
+ 	margin: auto;
+	
+	font-family: "Gill San", sans-serif;
+	
+}
+
+.title{
+	color: white;
+	font-size: 150px;
+	padding-bottom: 0px;
+	margin-bottom:0px;
+}
+
+.description{
+	color: white;
+	font-size: 30px;
+	padding-top: 0px;
+}
+
+.description2{
+	color: white;
+	font-size: 30px;
+	padding-top: 270px;
+}
+
+.copyright {
+	font-size: 20px;
+	/*position: fixed; */
+	padding-top: 0px;
+}
+
+
+.btn {
+	display: inline-block;
+	color: #666;
+	background-color: #eee;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 12px;
+	padding: 10px 30px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-bottom-width: 3px;
+}
+.btn:hover {
+	background-color: #e3e3e3;
+	border-color: rgba(0,0,0,0.5);
+	cursor:pointer;
+}
+	
+.btn:active {
+	background-color: #CCC;
+	border-color: rgba(0,0,0,0.9);
+}
+
+btn.btn-blue {
+	background-color: #699DB6;
+	border-color: rgba(0,0,0,0.3);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+	color: #FFF;
+}
+
+btn.btn-blue:hover {
+	background-color: #4F87A2;
+	border-color: rgba(0,0,0,0.5);
+}
+	
+btn.btn-blue:active {
+	background-color: #3C677B;
+	border-color: rgba(0,0,0,0.9);
+}
+

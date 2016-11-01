@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel = "stylesheet" type = "text/css" href ="logInPage.css">
+	</head>
+	<body>
+		<h1>Sign-In</h1>
+		
+		<form action="logIn" method="GET">
+			<input id = "email" type = "text" name = "email" placeholder = "Email"><br />
+			<input id = "password" class = "lastRow" type = "text" name = "password" placeholder = "Password"><br />
+			<input class = "submit" type="submit" onClick = "return checkFields()">
+		</form>
+		
+		<div id = "errorMsg"></div>
+		
+		<script src = "LogInPage.js"></script>
+		
+	</body>
+</html>
