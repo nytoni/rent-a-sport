@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Checkout</title>
+    <link rel="stylesheet" href="./menu.css">
+</head>
+<body>
+<ul>
+  <li><a href="./login.html">Login</a></li>
+  <li><a href="./registration.html">Register</a></li>  
+  <li><a href="./myAccount.html">My Account</a></li>
+  <li><a class="active" href="./myCart.html">My Cart</a></li>
+  <li><a href="./faq.html">FAQs</a></li>
+</ul>         
+    
+ 
+<h1>Checkout</h1>
+<p></p> 
+    
+<form action="AccountServlet">
+
+    <fieldset>
+        <legend>Shipping</legend>
+            <label>Name: </label>
+            <input id="checkoutNameId" type="text" name="name">
+            <br/>    
+            <label>Address: </label>
+            <input id="checkoutAddressId" type="text" name="address">
+    </fieldset>
+    
+     <fieldset>
+        <legend>Payment</legend>
+            <input id="currentCard" type="checkbox" name="">Current Card
+            <select>
+            <option id="cardOnFile1">1111-2222-3333-4444</option>
+            <option id="cardOnFile1">1111-2222-3333-4444</option>
+            <option id="cardOnFile1">1111-2222-3333-4444</option>
+            </select>
+         
+            <br/>
+            <input id="newCard" type="checkbox" onchange="speed();" name="Submission" value="TurboYes">New Card
+         
+            <br/>   
+            <label>Name: </label>
+            <input id="checkoutNameId" type="text" name="name">   
+            <label>Billing Address: </label>
+            <input id="billAddressId" type="text" name="billingAddress">
+            <br/>
+            <label>Credit Card Number: </label>
+            <input id="checkoutNameId" type="text" name="name">   
+             <br/>
+            <label>Expiration Date: </label>
+            <input id="expireDate" type="date" name="expireDate">  
+             <br/>
+            <label>Security Code: </label>
+            <input id="secureCode" type="text" name="secureCode">
+    </fieldset>
+
+<input type="Submit" value="Continue">
+
+</form>
+    
+</body>
+</html>

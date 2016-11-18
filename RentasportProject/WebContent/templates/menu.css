@@ -1,0 +1,10 @@
+body{
+ background-color: white;   
+}
+
+.column {
+    vertical-align: middle;
+margin: 15px;
+  float: left;
+  width: 30%;
+}
