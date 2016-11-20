@@ -33,7 +33,7 @@ public class UserServlet extends HttpServlet {
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		HashMap<String, Object> data = LogicImplementer.goCreateANewAccount(name, email, password);
+		HashMap<String, Object> data = UserLogicImpl.goCreateANewAccount(name, email, password);
 		String path = this.getServletContext().getRealPath("/WEB-INF/template/");
 		
 		Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
