@@ -10,6 +10,13 @@ public class UserPersister {
     return DbAccessImpl.createAccount(con, addRequest);
   
   }
+ 
+ public static int getUserId(String email){
+  String idQuery = "select id from UserNames where email = '" + email "';";
+  Connection con = DbAccessImpl.connect();
+  return DbAccessImpl.retrieve(con, idQuery);
+  
+ }
 
 
 
