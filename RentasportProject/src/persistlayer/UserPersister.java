@@ -6,8 +6,8 @@ public class UserPersister {
     
     String addRequest = "insert into UserNames (FirstName, LastName, Email, Password) values ('" + firstName + "','" + lastName + "','" + email + "','" + password + "');";
     
-    Connection con = DatabaseAccess.connect();
-    return DatabaseAccess.createAccount(con, addRequest);
+    Connection con = DbAccessImpl.connect();
+    return DbAccessImpl.createAccount(con, addRequest);
   
   }
 
