@@ -1,6 +1,6 @@
 package boundary;
 
-import logic.*;
+import logicLayer.*;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
