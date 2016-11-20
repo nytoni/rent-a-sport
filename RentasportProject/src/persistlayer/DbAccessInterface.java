@@ -9,6 +9,8 @@ public interface DbAccessInterface
 
 	public int create (Connection con, String query);
 	
+	public static int createAccount(Connection con, String query);
+	
 	public int delete (Connection con, String query);
 	
 	public void disconnect(Connection con);
