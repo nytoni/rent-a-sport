@@ -1,5 +1,8 @@
 package logiclayer;
 
+import persistlayer.*;
+import objectlayer.*;
+
 public class UserLogicImpl {
   public static HashMap<String, Object> goCreateANewAccount(String, name, String email, String password){
     
@@ -16,8 +19,17 @@ public class UserLogicImpl {
       lastName = "";
     }
     
-    int result = Persister.goCreateNewAccountSQLPersistLayer(firstName, lastName, email, password);
+    int result = UserPersister.goCreateNewAccountSQLPersistLayer(firstName, lastName, email, password);
+    HashMap<String, Object> data = new HashMap<>();
     
+    if(result == 1) {
+      data.put("result", 1); 
+    } else {
+      int userId = UserPersister.getUserId(email);
+      User currentUser = new User(userId, firstName, lastName, email, password);
+      data.put("currentUser", currentUser);
+    }
+    return data;
     
   }
 }
