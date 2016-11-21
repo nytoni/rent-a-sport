@@ -2,8 +2,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Review Order</title>
+<title>Review Orders</title>
     <link rel="stylesheet" href="./menu.css">
+    <script>
+    function cancelOrderPop(){
+     var mssg;
+        if(confirm("Are you sure you want to cancel this order?")==true)
+        {mssg="This order has been cancelled!";}
+        else{
+            mssg="You pressed cancel.";
+        }
+        alert(mssg);  
+    }
+    function cancelItemPop(){
+     alert('This Item has been cancelled!');  
+    }
+    </script>
+    
 </head>
 <body>
     
@@ -16,47 +31,29 @@
 </ul>         
     
  
-<h1>View All Orders</h1>
-<p></p> 
+<h1>View Only Current Order</h1>
+<h1>Order #: </h1>
     
-<form action="UserServlet" method="post">
-
-    <fieldset>
-        <legend>Change Password</legend>      
-            <label>Old Password: </label>
-            <input type="password" name="password" id="loginPassId" placeholder="Enter Password"/><br/>
-            <label>New Password: </label>
-            <input type="password" name="password" id="loginPassId" placeholder="Enter Password"/><br/>
-            <label>Confirm Password: </label>
-            <input type="password" name="password" id="loginPassId" placeholder="Enter Password"/><br/>
-        
-    <input type="Submit" value="Change">
-    </fieldset>
+<form action="OrdersServlet" method="post">
+     <input type="radio" name="toBeModified" value="item1">Item 1: 
+            <ul>
+            <ol>Ship Date:__</ol>
+            <ol>Estimated Arrival:__ </ol>
+            <ol>Price:__ </ol>
+            <ol>Status:__ </ol>
+            <ol>Due Date:__ </ol>
+            </ul>
+    <input type="radio" name="toBeModified" value="item2">Item 2:
+            <ul>
+            <ol>Ship Date:__</ol>
+            <ol>Estimated Arrival:__ </ol>
+            <ol>Price:__ </ol>
+            <ol>Status:__ </ol>
+            <ol>Due Date:__ </ol>
+            </ul>
+    <input type="submit" value="Cancel Order" onclick="cancelOrderPop()">
+    <input type="submit" value="Cancel Item" onclick="cancelItemPop()"> 
 </form>
-    
-<form action="AccountServlet" method="post">
-   <fieldset>
-        <legend>Payment</legend>       
-            <label>Name: </label>
-            <input id="checkoutNameId" type="text" name="name">   
-            <label>Billing Address: </label>
-            <input id="billAddressId" type="text" name="billingAddress">
-            <br/>
-            <label>Credit Card Number: </label>
-            <input id="checkoutNameId" type="text" name="name">   
-             <br/>
-            <label>Expiration Date: </label>
-            <input id="expireDate" type="date" name="expireDate">  
-             <br/>
-            <label>Security Code: </label>
-            <input id="secureCode" type="text" name="secureCode">
-            <br/>
-       
-    <input type="Submit" value="Change">
-    </fieldset> 
-</form>
-    
-    <button href="./browseBundle.html">Cancel</button>
     
 </body>
 </html>
