@@ -29,6 +29,13 @@ public class EditAccount extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String oldPassId = request.getParamter("oldPassId");
+		String newPassId = request.getParameter("newPassId");
+		String confirmPass = request.getParameter("confirmPass");
+		int userId = request.getParameter("userId");
+		
+		
+		
 	}
 
 	/**
