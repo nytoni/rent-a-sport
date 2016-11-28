@@ -19,4 +19,14 @@ public class EditAccountLogicImpl {
     
     
   }
+  
+  public static HashMap<String, Object> checkOldPassword(int userId, String oldPassId){
+    int result = UserPersister.checkOldPassword(userId, oldPassId);
+    
+    
+  }
+  
+  
+  
+  
 }
