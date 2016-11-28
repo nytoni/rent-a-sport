@@ -36,15 +36,37 @@ public class EditAccount extends HttpServlet {
 		
 		int didTheVerificationGetThrough = EditAccountLogicImpl.checkOldPassword(userId, oldPassId);
 		
+		String path = this.getServletContext().getRealPath("/WEB-INF/template/");
+		Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
+		cfg.setDirectoryForTemplateLoading(new File(path));
+		cfg.setDefaultEncoding("UTF-8");
+		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+		cfg.setLogTemplateExceptions(false);
+		
+		
 		if(didTheVerificationGetThrough){
-			
-			
-			
+			HashMap<String, Object> data = EditAccountLogicImpl.changePassword(userId, confirmPass);
+			Template template = cfg.getTemplate("successfulPasswordChange.ftl");
+			Writer out = new OutputStreamWriter(response.getOutputStream());
+			try {
+				template.process(data.out);
+			} catch (TemplateException e) {
+				e.printStackTrace();	
+			}
 		} else {
+			HashMap<String, Object> data = new HashMap();
+			data.put("userId", userId);
+			Template template = cfg.getTemplate("un-successfulPasswordChange.ftl");
+			Writer out = new OutputStreamWriter(response.getOutputStream());
+			try {
+				template.process(data.out);
+			} catch (TemplateException e) {
+				e.printStackTrace();	
+			}
 			
 		}
 		
-		HashMap<String, Object> data = EditAccountLogicImpl.changePassword(userId, confirmPass);
+		
 		
 		
 	}
