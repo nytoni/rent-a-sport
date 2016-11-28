@@ -20,8 +20,14 @@ public class EditAccountLogicImpl {
     
   }
   
-  public static HashMap<String, Object> checkOldPassword(int userId, String oldPassId){
-    int result = UserPersister.checkOldPassword(userId, oldPassId);
+  public static int checkOldPassword(int userId, String oldPassId){
+    ResultSet result = UserPersister.checkOldPassword(userId);
+    
+    if(result.getString(1) == oldPassId){
+      return 1; 
+    } else {
+      return 0;
+    }
     
     
   }
