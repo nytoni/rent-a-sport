@@ -34,7 +34,15 @@ public class EditAccount extends HttpServlet {
 		String confirmPass = request.getParameter("confirmPass");
 		int userId = request.getParameter("userId");
 		
-		HashMap<String, Object> data1 = EditAccountLogicImpl.checkOldPassword(userId, oldPassId);
+		int didTheVerificationGetThrough = EditAccountLogicImpl.checkOldPassword(userId, oldPassId);
+		
+		if(didTheVerificationGetThrough){
+			
+			
+			
+		} else {
+			
+		}
 		
 		HashMap<String, Object> data = EditAccountLogicImpl.changePassword(userId, confirmPass);
 		
