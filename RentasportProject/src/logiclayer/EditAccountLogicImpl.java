@@ -9,7 +9,13 @@ public class EditAccountLogicImpl {
   public static HashMap<String, Object> changePassword(int userId, String confirmPassword){
     
     int result = UserPersister.changePassword(userId, confirmPassword);
+    HashMap<String, Object> data = new HashMap<>();
     
+    if(result == 1) {
+      data.put("result", 1);
+    } else {
+       
+    }
     
     
   }
