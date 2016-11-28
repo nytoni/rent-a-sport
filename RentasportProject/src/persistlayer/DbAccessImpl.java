@@ -58,6 +58,16 @@ public class DbAccessImpl {
 		}
 		return result;
 	}
+	public static int changePassword(Connection con, String query){
+		int result = 0;
+		try {
+			Statement stmt = con.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e){
+			e.printStackTrace();	
+		}
+		return result;
+	}
 
 	public int delete(Connection con, String query)
 	{
