@@ -39,6 +39,11 @@ public class UserPersister {
   public static int changePassword(int userId, String confirmPassword){
     String changeRequest = "update user set password = '" + confirmPassword + "', where customerId = '"+userId + "';";
     return DbAccessImpl.changePassword(con, changeRequest);
-  }                                
+  }  
+  
+  public static resultSet checkOldPassword(int userId){
+    String oldPasswordQuery = "select password from user where customerId = '" + userId + "';"; 
+    return DbAcessImpl.retrieve(con, oldPasswordQuery);
+  }
                                    
 }
