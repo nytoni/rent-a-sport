@@ -34,6 +34,7 @@ public class EditAccount extends HttpServlet {
 		String confirmPass = request.getParameter("confirmPass");
 		int userId = request.getParameter("userId");
 		
+		HashMap<String, Object> data = 
 		
 		
 	}
