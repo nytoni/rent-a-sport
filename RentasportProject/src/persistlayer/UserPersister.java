@@ -36,9 +36,9 @@ public class UserPersister {
   return DbAccessImpl.retrieve(con,idQuery);
  }//getMyCart
 
-  public static int changePassword(int userId, String confirmPassword){
+  public static void changePassword(int userId, String confirmPassword){
     String changeRequest = "update user set password = '" + confirmPassword + "', where customerId = '"+userId + "';";
-    return DbAccessImpl.changePassword(con, changeRequest);
+    int whatever = DbAccessImpl.changePassword(con, changeRequest);
   }  
   
   public static resultSet checkOldPassword(int userId){
