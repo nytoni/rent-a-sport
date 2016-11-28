@@ -8,14 +8,12 @@ import objectlayer.*;
 public class EditAccountLogicImpl {
   public static HashMap<String, Object> changePassword(int userId, String confirmPassword){
     
-    int result = UserPersister.changePassword(userId, confirmPassword);
+    //go down ladder and change to void
+    UserPersister.changePassword(userId, confirmPassword);
     HashMap<String, Object> data = new HashMap<>();
-    
-    if(result == 1) {
-      data.put("result", 1);
-    } else {
-       
-    }
+   
+    data.put("userId", userId);
+    return data;
     
     
   }
