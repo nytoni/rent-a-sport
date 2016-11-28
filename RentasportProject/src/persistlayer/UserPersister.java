@@ -36,4 +36,6 @@ public class UserPersister {
   return DbAccessImpl.retrieve(con,idQuery);
  }//getMyCart
 
+  public static int changePassword(int userId, String confirmPassword
+  
 }
