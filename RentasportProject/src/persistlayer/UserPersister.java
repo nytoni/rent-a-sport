@@ -5,9 +5,9 @@ import java.sql.SQLException;
 public class UserPersister {
   Connection con = DbAccessImpl.connect();
  
-  public static int goCreateNewAccountSQLPersistLayer(String firstName, String lastName, String email, String password){
+  public static int goCreateNewAccountSQLPersistLayer(String name, String email, String password){
     
-    String addRequest = "insert into UserNames (FirstName, LastName, Email, Password) values ('" + firstName + "','" + lastName + "','" + email + "','" + password + "');";
+    String addRequest = "insert into UserNames (Name, Email, Password) values ('" +  name + "','" + email + "','" + password + "');";
     return DbAccessImpl.createAccount(con, addRequest);
   
   }//newAccount
