@@ -31,10 +31,10 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String userLoginEmail = request.getParameter("loginUserId");
-		String userLoginPassword = request.getParameter("loginPassId");
+		String email = request.getParameter("loginUserId");
+		String password = request.getParameter("loginPassId");
 		
-		HashMap<String, Object> data = UserLogicImpl.logIn(userLoginEmail, userLoginPassword);
+		HashMap<String, Object> data = UserLogicImpl.logIn(email, password);
 		
 		}
 	
