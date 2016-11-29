@@ -36,7 +36,36 @@ public class UserServlet extends HttpServlet {
 		
 		HashMap<String, Object> data = UserLogicImpl.logIn(email, password);
 		
+		String path = this.getServletContext().getRealPath("/WEB-INF/template/");
+		
+		Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
+		cfg.setDirectoryForTemplateLoading(new File(path));
+		cfg.setDefaultEncoding("UTF-8");
+		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+		cfg.setLogTemplateExceptions(false);
+		
+		if(data.get("result") == (Integer) 1) {
+			Template template = cfg.getTemplate("successfulLogin.ftl");
+			Writer out = new OutputStreamWriter(response.getOutputStream());
+			try {
+				template.process(data, out);	
+			} catch(TemplateException e) {
+				e.printStackTrace();	
+			}
+		} else {
+			Template template = cfg.getTemplate("un-successfulLogin.ftl");
+			Writer out = new OutputStreamWriter(response.getOutputStream());
+			try {
+				template.process(data, out);	
+			} catch (TemplateException e) {
+				e.printStackTrace();	
+			}
+			
 		}
+		
+		
+		
+		
 	
 	}
 
