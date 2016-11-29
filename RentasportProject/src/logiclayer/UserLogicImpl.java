@@ -33,7 +33,7 @@ public class UserLogicImpl {
     
   }
   public static HashMap<String, Object> logIn(String email, String password){
-      ResultSet rset = 
+      ResultSet rset = UserPersister.goGetLoginInfo(email, password);
     
   }
 }
