@@ -41,9 +41,15 @@ public class UserPersister {
     int whatever = DbAccessImpl.changePassword(con, changeRequest);
   }  
   
-  public static resultSet checkOldPassword(int userId){
+  public static ResultSet checkOldPassword(int userId){
     String oldPasswordQuery = "select password from user where customerId = '" + userId + "';"; 
     return DbAcessImpl.retrieve(con, oldPasswordQuery);
+  }
+  
+  public static ResultSet goGetLoginInfo(String email, String password){
+    String getRequest = "select * from user where email = '" + email + "' AND password = '" + password + "';";
+    return DatabaseAccess.retrieve(con, getRequest);
+    
   }
                                    
 }
