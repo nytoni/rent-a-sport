@@ -41,11 +41,11 @@ public class UserLogicImpl {
           data.put("email", email);
         }
         else{
+          
+          User currentUser = new User(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4));
+          data.put("currentUser", currentUser);
+          
           data.put("result", 1);
-          data.put("customerId", rset.getString(1));
-          data.put("name", rset.getString(2));
-          data.put("password", rset.getString(3));
-          data.put("email", rset.getString(4));
           
         }
       } catch (SQLException e) {
