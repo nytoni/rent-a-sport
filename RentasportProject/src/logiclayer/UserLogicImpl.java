@@ -4,7 +4,7 @@ import persistlayer.*;
 import objectlayer.*;
 
 public class UserLogicImpl {
-  public static HashMap<String, Object> goCreateANewAccount(String, name, String email, String password){
+  public static HashMap<String, Object> goCreateANewAccount(String name, String email, String password){
     
     String firstName = "";
     String lastName = "";
@@ -30,6 +30,9 @@ public class UserLogicImpl {
       data.put("currentUser", currentUser);
     }
     return data;
+    
+  }
+  public static HashMap<String, Object> logIn(String email, String password){
     
   }
 }
