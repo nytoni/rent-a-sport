@@ -3,16 +3,14 @@ package objectlayer;
 public class User {
     
     int userId;
-    String firstName;
-    String lastName;
+    String name;
     String email;
     String password;  
   
-    public User(int userId, String firstName, String lastName, String email, String password){
+    public User(int userId, String name, String email, String password){
       super();
       this.userId = userId;
-      this.firstName = firstName;
-      this.lastName = lastName;
+      this.name= name;
       this.email = email;
       this.password = password;
     }
@@ -24,11 +22,11 @@ public class User {
       this.userId = userId; 
     }
   
-    public String getFirstName(){
-       return firstName;
+    public String getName(){
+       return name;
     }
-    public void setFirstName(String firstName){
-      this.firstName = firstName; 
+    public void setName(String name){
+      this.name = name; 
     }
     
     public String getLastName(){
