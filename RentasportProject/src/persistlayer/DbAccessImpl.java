@@ -3,7 +3,7 @@ package persistlayer;
 import java.sql.*;
 
 public class DbAccessImpl {
-	public Connection connect() {
+	public static Connection connect() {
 		Connection con = null;
 		try {
 			Class.forName(DbAccessConfiguration.DRIVE_NAME);
@@ -19,7 +19,7 @@ public class DbAccessImpl {
 	}
 	
 	//The method to retrieve and manipulate data from the sql table 
-	public ResultSet retrieve (Connection con, String query) {
+	public static ResultSet retrieve (Connection con, String query) {
 		ResultSet rset = null;
 		try {
 			Statement stmt = con.createStatement();
