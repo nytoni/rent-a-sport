@@ -1,4 +1,4 @@
-package objectlayer;
+//package objectlayer;
 
 public class User {
     
@@ -27,13 +27,6 @@ public class User {
     }
     public void setName(String name){
       this.name = name; 
-    }
-    
-    public String getLastName(){
-       return lastName;
-    }
-    public void setLastName(String lastName){
-      this.lastName = lastName; 
     }
     
     public String getEmail(){
