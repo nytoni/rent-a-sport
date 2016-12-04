@@ -3,16 +3,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserPersister {
-  Connection con = DbAccessImpl.connect();
+  static Connection con = DbAccessImpl.connect();
  
   public static int goCreateNewAccountSQLPersistLayer(String name, String email, String password){
     
-    String addRequest = "insert into UserNames (Name, Email, Password) values ('" +  name + "','" + email + "','" + password + "');";
+    String addRequest = "insert into User (Name, Email, Password) values ('" +  name + "','" + email + "','" + password + "');";
     return DbAccessImpl.createAccount(con, addRequest);
   
   }//newAccount
  
- public static int getUserId(String email){
+ public static ResultSet getUserId(String email){
   String idQuery = "select id from UserNames where email = '" + email +"';";
   return DbAccessImpl.retrieve(con, idQuery);
   
