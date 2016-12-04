@@ -1,7 +1,11 @@
-package logiclayer;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 
-import persistlayer.*;
-import objectlayer.*;
+//package logiclayer;
+//
+//import persistlayer.*;
+//import objectlayer.*;
 
 public class UserLogicImpl {
   public static HashMap<String, Object> goCreateANewAccount(String name, String email, String password){
@@ -14,8 +18,18 @@ public class UserLogicImpl {
     if(result == 1) {
       data.put("result", 1); 
     } else {
-      int userId = UserPersister.getUserId(email);
-      User currentUser = new User(userId, name, email, password);
+      ResultSet userId = UserPersister.getUserId(email);
+      User currentUser = new User(0,null,null,null);
+      try {
+		currentUser = new User(Integer.parseInt(userId.getString(1)), name, email, password);
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
       data.put("currentUser", currentUser);
     }
     return data;
@@ -31,7 +45,7 @@ public class UserLogicImpl {
         }
         else{
           
-          User currentUser = new User(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4));
+          User currentUser = new User(Integer.parseInt(rset.getString(1)), rset.getString(2), rset.getString(3), rset.getString(4));
           data.put("currentUser", currentUser);
           
           data.put("result", 1);
