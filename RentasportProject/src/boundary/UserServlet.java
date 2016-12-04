@@ -1,13 +1,24 @@
-package boundary;
 
-import logicLayer.*;
+//package boundary;
+//
+//import logicLayer.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateExceptionHandler;
 
 /**
  * Servlet implementation class UserServlet
@@ -35,7 +46,7 @@ public class UserServlet extends HttpServlet {
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		HashMap<String, Object> data = UserLogicImpl.goCreateANewAccount(name, email, password);
+		HashMap<String, Object> data = UserLogicImpl.goCreateANewAccount(name, userName, password);
 		String path = this.getServletContext().getRealPath("/WEB-INF/template/");
 		
 		Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
@@ -65,9 +76,9 @@ public class UserServlet extends HttpServlet {
 		}
 			
 			
-		}
-	
 	}
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
