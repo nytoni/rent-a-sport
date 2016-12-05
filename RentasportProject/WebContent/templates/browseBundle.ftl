@@ -13,10 +13,10 @@
   <li><a href="./myAccount.ftl">My Account</a></li>
   //reference
   
-  <form action = "CartServlet" method = "post">
-    <li><!-- <a href="./myCart.ftl"> -->My Cart<!-- </a> --></li>
-    <input type = "hidden" value = "${customer.customerId}">
-    
+  <form id = "cart-form" action = "CartServlet" method = "post">
+    <li onclick = "document.forms['cart-form'].submit();"><!-- <a href="./myCart.ftl"> -->My Cart<!-- </a> -->
+        <input type = "hidden" value = "${customer.customerId}">
+    </li>
     
   </form>
   
