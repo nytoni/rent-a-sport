@@ -11,7 +11,15 @@
   <li><a href="./login.ftl">Login</a></li>
   <li><a href="./registration.ftl">Register</a></li>  
   <li><a href="./myAccount.ftl">My Account</a></li>
-  <li><a href="./myCart.ftl">My Cart</a></li>
+  //reference
+  
+  <form action = "CartServlet" method = "post">
+    <li><!-- <a href="./myCart.ftl"> -->My Cart<!-- </a> --></li>
+    <input type = "hidden" value = "${customer.customerId}">
+    
+    
+  </form>
+  
   <li><a href="./faq.ftl">FAQs</a></li>
   <li><a class="active" href="./browseBundle.ftl">Browse Bundles</a></li>
   <li><a href="./login.ftl">Logout</a></li>
