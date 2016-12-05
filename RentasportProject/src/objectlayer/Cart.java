@@ -42,27 +42,27 @@ public class Cart {
 			return time;
 		}
 		
-		public void getCustomerId(int cid)
+		public void setCustomerId(int cid)
 		{
 			this.customerId= cid;
 		}
 		
-		public void getOrderNum(int ordNum)
+		public void setOrderNum(int ordNum)
 		{
 			this.orderNum= ordNum;
 		}
 		
-		public void getBundleName(String bundleNm)
+		public void setBundleName(String bundleNm)
 		{
 			this.bundleName= bundleNm;
 		}
 		
-		public void getQuantity(int qty)
+		public void setQuantity(int qty)
 		{
 			this.quantity=qty;
 		}
 		
-		public void getTime(String t)
+		public void setTime(String t)
 		{
 			this.time=t;
 		}
