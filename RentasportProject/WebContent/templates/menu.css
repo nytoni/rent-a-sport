@@ -1,10 +1,79 @@
+/*Created by: Toni-Ann Plowright
+ *CSCI 4300 Term Project
+*/ 
+/*******************body******************/
 body{
- background-color: white;   
-}
+    font-family: verdana;
+    background-color: white;
+    background: url(https://www.beyondthetent.com/wp-content/uploads/2015/03/Background-Image.jpg) no-repeat center center fixed;
+    background-size:cover;
+    height: 100%;
+    width: 100%;
+    }
 
+
+/*******************menu******************/
+ul{
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ff9900;
+    border: solid 3px black;
+    padding-right: 10px;
+    opacity: 0.8;
+    }
+    
+    li a{
+    float:left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    }
+    
+    li a:hover {
+    background-color: gray;
+    }
+
+    .active {
+    background-color: #80bfff;
+    }
+    
+/*******************browseBundle.html:Pics of Bundles******************/
 .column {
     vertical-align: middle;
-margin: 15px;
-  float: left;
-  width: 30%;
+    margin: 15px;
+    float: left;
+    width: 30%;
 }
+
+img{
+    margin: 20px;
+    width:  100px;
+    height: 250px;
+    background-position: 50% 50%;
+    border: 5px solid black;
+}
+
+/*******************sportPackage.html:Rental Table******************/
+    .tbl{
+        float: left;
+        width: 20%;
+        padding: 3px;
+        font-size: 130%;
+        }
+        
+    .rentTable{
+        list-style-type: none;
+        border: 3px solid black;
+        margin: 0;
+        padding: 0;
+        }
+        
+    .rentTable li{
+        border-bottom: 1px solid black;
+        padding: 10px;
+        text-align: center;
+        }        
