@@ -63,7 +63,7 @@ customerId      int             NOT NULL,
 orderNum        int             NOT NULL,
 bundleName      varchar(255)    NOT NULL,
 quantity        int             NOT NULL,
-time            varchar(255)    NOT NULL, 
+timePeriod      varchar(255)    NOT NULL, 
     
 FOREIGN KEY(customerId) REFERENCES user(customerId),    
 FOREIGN KEY(orderNum) REFERENCES orders(orderNum)
