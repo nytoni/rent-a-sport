@@ -1,5 +1,8 @@
 package objectlayer;
-
+/*This class just includes the simple 
+ *Getter() and Setter() methods for 
+ *the Cart class
+ */
 public class Cart {
 
 		private int customerId;

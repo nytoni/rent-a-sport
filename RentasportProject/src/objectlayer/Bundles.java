@@ -1,5 +1,8 @@
 package objectlayer;
-
+/*This class just includes the simple 
+ *Getter() and Setter() methods for 
+ *the Bundle class
+ */
 public class Bundles {
 
 	private String bundleName;
