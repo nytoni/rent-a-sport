@@ -46,6 +46,7 @@ public class CartServlet extends HttpServlet {
 		if(request.getParameter("submitOrder")!=null){
 			//call sql to add order to orders table and redirect to home page
 			ArrayList<Items> myList = CartLogicImpl.generateList(Integer.parseInt(request.getParameter("userId")));
+			//this finds out total items in cart and totprice to display for cart
 			int total = myList.size();
 			int totPrice=0;
 			for(int i = 0; i<total; i++){
@@ -76,21 +77,20 @@ public class CartServlet extends HttpServlet {
 				
 					data.put("items", myList);
 				
-				
+					//generate total number of items and total price
 					int total = myList.size();
 					int totPrice=0;
 					for(int i = 0; i<total; i++){
 						totPrice += myList.get(i).getPrice();
 					
 					}//for
+					//place all required fields into freemarker
 					String[] otherInfo = CartLogicImpl.generateOrderInfo(Integer.parseInt(request.getParameter("userId")));
 					data.put("names", request.getParameter("name"));
 					data.put("sa", otherInfo[0]);
 					data.put("ba", otherInfo[1]);
 					data.put("cc", otherInfo[2]);
-					data.put("ed", otherInfo[3]);
-					
-					
+					data.put("ed", otherInfo[3]);					
 					data.put("totalPrice", totPrice);
 					data.put("totalItems", total);
 					template.process(data, out);
@@ -113,7 +113,7 @@ public class CartServlet extends HttpServlet {
 		        cfg.setClassForTemplateLoading(this.getClass(),"");
 			
 			//log("name:"+request.getParameter("name"));
-			
+			//populate string array to store server info for checkout page
 			String[] creditCardNum = CartLogicImpl.getCheckouts(request.getParameter("userId"));
 			try{
 				 Template template = cfg.getTemplate("checkout.html");
@@ -129,7 +129,7 @@ public class CartServlet extends HttpServlet {
 		}else{
 			//generate or regenerate cart depending on context its called in
 			response.getWriter().append("Served at: ").append(request.getContextPath());
-			//check and see if updating cart in sql is required
+			//check and see if updating cart in sql is required, if so execute
 			if(request.getParameter("camping")!=null){
 				CartLogicImpl.removeBundleFromCart("camping", Integer.parseInt(request.getParameter("userId")));
 			}//if
@@ -165,10 +165,10 @@ public class CartServlet extends HttpServlet {
 				 Template template = cfg.getTemplate("myCart.html");
 				HashMap<String, Object> data = new HashMap<String, Object>();
 				ArrayList<Items> myList = CartLogicImpl.generateList(Integer.parseInt(request.getParameter("userId")));
-				
+				//put list of items into hashmap
 				data.put("items", myList);
 				
-				
+				//create total number of items and total price for cart
 				int total = myList.size();
 				int totPrice=0;
 				for(int i = 0; i<total; i++){
