@@ -77,6 +77,11 @@ public class UserPersister {
 	  String query = "select * from orders where customerId ='"+userId+"';";
 	  return DbAccessImpl.retrieve(con, query);
   }
+	
+  public static ResultSet goMaintainUserInfo(int userId) {
+	String query = "select * from user where customerId = '" + userId + "';";
+	return DbAccessImpl.retrieve(con,query);
+  }
   
   
 }
