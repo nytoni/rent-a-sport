@@ -50,6 +50,8 @@ public class RemoveOrderServlet extends HttpServlet {
 		cfg.setDirectoryForTemplateLoading(new File(path));	
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+		User currentUser = UserLogicImpl.maintainUser(userId);
+		data.add("currentUser", currentUser);
 
 		cfg.setLogTemplateExceptions(false);
 		if(data.get("thereIsItem")==(Integer)1){
