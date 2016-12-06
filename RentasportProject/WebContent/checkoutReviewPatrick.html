@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Review Order</title>
+    <link rel="stylesheet" href="./menu.css">
+</head>
+<body>
+<ul>
+  <li><a href="./login.ftl">Login</a></li>
+  <li><a href="./registration.ftl">Register</a></li>  
+  <li><a href="./myAccount.ftl">My Account</a></li>
+  <li><a href="./myCart.ftl">My Cart</a></li>
+   <li><a href="./login.ftl">logout</a></li>
+  <li><a href="./faq.ftl">FAQs</a></li>
+</ul>         
+    
+ 
+<h1>Review Order</h1>
+<p></p> 
+    
+<form action="CartServlet">
+
+    <fieldset>
+        <legend>Shipping</legend>
+            <label>Name: ${names} </label>
+            <br/>
+            <label>Address: ${sa} </label>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Payment</legend>
+            <label>Name: ${names}</label>
+            <br/>
+            <label>Billing Address: ${ba} </label>
+            <br/>
+            <label>Credit Card Number: ${cc} </label> 
+             <br/>
+            <label>Expiration Date: ${ed}</label>  
+             <br/>
+        
+    </fieldset>
+
+    <fieldset>
+        <legend>Items:
+        	<#list items as item>
+        		${item.bundleName} quantity: ${item.quantity}
+        	</#list>
+        </legend>
+           
+    </fieldset>
+    
+   <p>Total: $ ${totprice}</p>
+
+<input type="Submit" name ="submitOrder" value="Checkout">
+
+
+</form>
+    
+</body>
+</html>
