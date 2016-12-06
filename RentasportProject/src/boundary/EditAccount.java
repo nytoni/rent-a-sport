@@ -68,12 +68,13 @@ public class EditAccount extends HttpServlet {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
 	
 		cfg.setLogTemplateExceptions(false);
-
+		User currentUser = UserLogicImpl.maintainUser(userId);
 		
 		if(dTVGTb){
 			HashMap<String, Object> data = EditAccountLogicImpl.changePassword(userId, confirmPass);
 			Template template = cfg.getTemplate("successfulPasswordChange.ftl");
 			Writer out = new OutputStreamWriter(response.getOutputStream());
+			data.add("currentUser", currentUser);
 			try {
 				template.process(data,out);
 			} catch (TemplateException e) {
@@ -82,6 +83,7 @@ public class EditAccount extends HttpServlet {
 		} else {
 			HashMap<String, Object> data = new HashMap();
 			data.put("userId", userId);
+			data.add("currentUser", currentUser);
 			Template template = cfg.getTemplate("un-successfulPasswordChange.ftl");
 			Writer out = new OutputStreamWriter(response.getOutputStream());
 			try {
