@@ -30,7 +30,7 @@ CHECK(quantity>0)
 CREATE TABLE account
 ( 
 customerId      int             UNIQUE PRIMARY KEY,
-creditName      varchar         NOT NULL,
+creditName      varchar(255)    NOT NULL,
 shippingAddr    varchar(255)    NOT NULL,
 billingAddr     varchar(255)    NOT NULL,
 cardNum         varchar(255)    NOT NULL,
@@ -59,7 +59,7 @@ ALTER TABLE orders AUTO_INCREMENT = 80801;
 CREATE TABLE cart
 (   
 customerId      int             NOT NULL,
-orderNum        int                     ,
+orderNum        int             ,
 bundleName      varchar(255)    NOT NULL,
 quantity        int             NOT NULL,
 timePeriod      varchar(255)    NOT NULL, 
@@ -67,6 +67,8 @@ timePeriod      varchar(255)    NOT NULL,
 FOREIGN KEY(customerId) REFERENCES user(customerId),    
 FOREIGN KEY(orderNum) REFERENCES orders(orderNum)
 );
+
+SET FOREIGN_KEY_CHECKS=0;
 
 INSERT INTO user VALUES(default, 'Jane Doe', 'psswd', 'jane@yahoo.com');
 INSERT INTO user VALUES(default, 'Fred Douglas','ps123','fred@yahoo.com');
@@ -87,10 +89,10 @@ INSERT INTO bundles VALUES('volleyball', 10,
                             'volleyball, knee pads',
                             50,75,100,125,150, 'http://www.kbacoach.com/images/promo/2/kba_volleyball_banner.jpg');
                            
-INSERT INTO account VALUES((select customerId from user where name = 'Jane Doe'),'123 Main Road','123 Main Road', '1000 2222 3333 4444', '05/2017', '201'); 
-INSERT INTO account VALUES((select customerId from user where name = 'Fred Douglas'),'123 Main Road','123 Main Road', '1111 2222 3333 4444', '2017-01-00', '201');
-INSERT INTO orders VALUES(default, (select customerId from user where name = 'Jane Doe'), CURDATE(),'2016-11-20', 200, 3, 2,'good', '2016-12-13', 'open');
-INSERT INTO orders VALUES(default, (select customerId from user where name = 'Jane Doe'), CURDATE(),'2016-11-20', 500, 2, 1,'fair', '2016-12-13', 'closed');
+INSERT INTO account VALUES((select customerId from user where name = 'Jane Doe'),'Jane Dougie', '123 Main Road','123 Main Road', '1000 2222 3333 4444', '05/2017', '201'); 
+INSERT INTO account VALUES((select customerId from user where name = 'Fred Douglas'), 'Fredrick TheMan', '123 Main Road','123 Main Road', '1111 2222 3333 4444', '2017-01-00', '201');
+INSERT INTO orders VALUES(default, (select customerId from user where name = 'Jane Doe'), CURDATE(),'2016-11-20', 200, 3,'good', '2016-12-13', 'open');
+INSERT INTO orders VALUES(default, (select customerId from user where name = 'Jane Doe'), CURDATE(),'2016-11-20', 500, 2,'fair', '2016-12-13', 'closed');
 
 INSERT INTO cart VALUES((select customerId from user where name = 'Jane Doe'),(select orderNum from orders JOIN user ON user.customerId=orders.customerId where user.name= 'Jane Doe' and orders.orderStatus= 'open'), 'camping', 2, 'price_mnth');
 
