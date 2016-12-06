@@ -9,7 +9,13 @@ public interface DbAccessInterface
 
 	public int create (Connection con, String query);
 	
-	public static int createAccount(Connection con, String query);
+	public static int createAccount(Connection con, String query){
+		return 0;
+	}
+	
+	public static int changePassword(Connection con, String query){
+		return 0;
+	}
 	
 	public int delete (Connection con, String query);
 	
