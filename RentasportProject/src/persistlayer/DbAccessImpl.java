@@ -36,10 +36,7 @@ public class DbAccessImpl {
 		int rowCount=5;
 		try 
 		{
-			//Statement stmt = con.createStatement();
-			//rowCount = stmt.executeUpdate(query);
 			PreparedStatement ps= con.prepareStatement(query);
-			//ps.execute();
 			ps.executeUpdate();
 			return rowCount;
 		} catch (SQLException e) {
