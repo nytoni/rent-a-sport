@@ -1,6 +1,5 @@
 package boundary;
 
-import persistlayer.*;
 import logiclayer.*;
 import objectlayer.*;
 
@@ -12,14 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-/*
-import edu.uga.cs4300.boundary.Configuration;
-import edu.uga.cs4300.boundary.DefaultObjectWrapperBuilder;
-import edu.uga.cs4300.boundary.SimpleHash;
-import edu.uga.cs4300.boundary.Template;
-import edu.uga.cs4300.boundary.TemplateException;
-*/
 
 import java.util.*;
 import freemarker.template.*;
@@ -53,32 +44,27 @@ public class BundlesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	
-		PrintWriter out= response.getWriter();
-		String userId=null, imagePath=null;
-		String bundleName, qty="1", time=null;
-		imagePath=request.getParameter("");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String userId=null, bundleName= null, qty="1", time=null;
+		
+		//Get servlet parameters
 		userId= request.getParameter("userId");
-		bundleName=request.getParameter("action"); 
+		bundleName=request.getParameter("action");
+		//If first servlet sent, then process this if statement
 		if(bundleName!=null)
 		{
-			if(bundleName.equals("football"))
-			{	
-				out.println("BRUUUUUUHHHH!!!!!");
-			}
-			loadSportPkgPage(request, response, bundleName) ;
+			loadSportPkgPage(request, response, bundleName);
 		}
-		else{
-		//imagePath=request.getParameter("imgPath"); //check value
-				//bundleName=request.getParameter("action");
+		else{//If second servlet sent, then process this else statement
+			//Get servlet parameters
+				userId=request.getParameter("userId");
+				bundleName=request.getParameter("bundleType");
 				qty=request.getParameter("quantity");
 				time=request.getParameter("rentDuration");
-				bundleName="football";
-			}
-		//loadTemplate(request,response,"viewMovie.ftl");
+				loadRentalPageResult(request, response, userId, bundleName, qty, time);
+		}
 		
-		loadRentalPageResult(request, response, userId, bundleName, qty, time);
 	}
 
 	/**
@@ -88,7 +74,9 @@ public class BundlesServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
+	/*This method just loads a specific FTL file
+	 */
 	public void loadTemplate(HttpServletRequest request, HttpServletResponse response, String templateName)
 	{
 		Template template = null;
@@ -106,6 +94,10 @@ public class BundlesServlet extends HttpServlet {
 		}
 	}
 	
+	/*This method processes when a selection is made 
+	 *from the browseBundle.html and returns a freemarker
+	 *result page
+	 */
 	public void loadSportPkgPage(HttpServletRequest request, HttpServletResponse response, String imgPath) 
 	{
 		Template template = null;
@@ -122,6 +114,7 @@ public class BundlesServlet extends HttpServlet {
 			template = cfg.getTemplate(templateName );
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
+			//root.put("sportNames", bundleList);
 			template.process(root, out);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -130,6 +123,10 @@ public class BundlesServlet extends HttpServlet {
 		}
 	}
 	
+	/*This method processes when a selection is made 
+	 *from sportPackage.ftl and returns a freemarker
+	 *result page to show that the insert worked
+	 */
 	public void loadRentalPageResult(HttpServletRequest request, HttpServletResponse response, String custId, String bundleName, String qty, String time) 
 	{
 		Template template = null;
@@ -140,10 +137,10 @@ public class BundlesServlet extends HttpServlet {
 
 		List<Cart> cartList = new ArrayList<Cart>();
 		cartList = mc.getBundleBySportPkg(custId, bundleName, qty, time);
-		root.put("movieNames", cartList);
+		root.put("toCart", cartList);
 		
 		try {
-			String templateName = "result.ftl";
+			String templateName = "bee.ftl";
 			template = cfg.getTemplate(templateName );
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
