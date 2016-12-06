@@ -48,7 +48,6 @@ shipDate        date            NOT NULL,
 arrivalDate     date            NOT NULL,
 price           int             NOT NULL,
 itemsInOrder    int             NOT NULL,
-quantity        int             NOT NULL,
 conditionStat   varchar(255)    NOT NULL,
 dueDate         date            NOT NULL,
 orderStatus     varchar(255)    NOT NULL,
@@ -60,7 +59,7 @@ ALTER TABLE orders AUTO_INCREMENT = 80801;
 CREATE TABLE cart
 (   
 customerId      int             NOT NULL,
-orderNum        int             NOT NULL,
+orderNum        int                     ,
 bundleName      varchar(255)    NOT NULL,
 quantity        int             NOT NULL,
 timePeriod      varchar(255)    NOT NULL, 
