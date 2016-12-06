@@ -58,17 +58,14 @@ public class UserLogicImpl {
       return data;
   }
 	
-  public static HashMap<String, Object> maintainUser(int userId){
+  public static User maintainUser(int userId){
 	ResultSet rset = UserPersister.getMaintainUserInfo(userId);
-	HashMap<String, Object> data = new HashMap<>();
 	try {
 		User currentUser = new User(Integer.parseInt(rset.getString(1)), rset.getString(2), rset.getString(3), rset.getString(4));
-		data.put("currentUser", currentUser);
+		return currentUser;	
 	
 	} catch (SQLException e) {
 	   e.printStackTrace();		
-	}
-	return data;
-	  
+	} 
   }
 }
