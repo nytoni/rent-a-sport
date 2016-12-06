@@ -22,19 +22,22 @@
 </ul>         
     
  
-<h1>Sport Package:___Football</h1>
+<h1>Sport Package:___Football-- ${bundleName}</h1>
 
 <img src="http://media.staps.nantes.free.fr/L3EM_G1/David/res/L-equipement-d-un-joueur.jpg" style="width:20%">
     
+<img src="${imagePath}" alt="Sorry Something happened" style="width:20%">    
+    
 <form autocomplete="on" action="./CartServlet" method="post">
+<input type = "hidden" name = "userId" value = "${currentUser.userId}">
 <div class="tbl">
 <ul class="rentTable">
     <li>Rental Duration</li>
-    <li><input type="radio" name="rentDuration" value="wk1" checked>1 Week<br/>
-    <input type="radio" name="rentDuration" value="wk2">2 Weeks<br/>
-    <input type="radio" name="rentDuration" value="mnth1">1 Month<br/>
-    <input type="radio" name="rentDuration" value="mnth3">3 Months<br/>
-    <input type="radio" name="rentDuration" value="mnth6">6 Months</li>
+    <li><input type="radio" name="rentDuration" value="price_wk" checked>1 Week<br/>
+    <input type="radio" name="rentDuration" value="price_2wk">2 Weeks<br/>
+    <input type="radio" name="rentDuration" value="price_mnth">1 Month<br/>
+    <input type="radio" name="rentDuration" value="price_3mnth">3 Months<br/>
+    <input type="radio" name="rentDuration" value="price_6mnth">6 Months</li>
     <li>Quantity:<input type="number" name="quantity" min="1" max="10" required></li>
     <li><input type="submit" onclick="message();"value="Add to Cart"/></li>
 </ul>
@@ -43,7 +46,7 @@
     
 <h2>Includes: </h2>   
     
-<p>...description...(items in Bundle table)</p>
+<p>...description...(items in Bundle table) ${items} </p>
     
 </body>
 </html>
