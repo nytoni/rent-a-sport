@@ -66,5 +66,17 @@ public class UserPersister {
 	  String query = "select * from orders where customerId = '" + userId + "';";
 	  return DbAccessImpl.retrieve(con, query);
   }
+	
+	  
+  public static void removeOrder(int orderId){
+	  String query ="delete from orders where orderNum ='"+orderId+"';";
+	  int whatever = DbAccessImpl.changePassword(con, query);
+  }
+ 
+  public static ResultSet checkItems(int userId){
+	  String query = "select * from orders where customerId ='"+userId+"';";
+	  return DbAccessImpl.retrieve(con, query);
+  }
+  
   
 }
