@@ -1,50 +1,92 @@
-package objectlayer;
 
-public enum Orders {
-        String Addr;
-        //occupy Cc from database
-      String[] cC;
-      String newCC;
-      String newBillAddress;
-      String newCCV;
-      String newName;
-  
-      String CCUsed;
-  
-  
-   public String getAddr(){
-      return getAddr;
-  }//getAddr
-  
-  public void setCreditCard(){
-    //if I decide ites necessary I will add coder here to occupy 
-    //credit cards from database
-  }//setCreditCard
- 
-  public void SetNewCC(int newCredit){
-    newCC = newCredit;
-  }//setnewCC
-  
-  public void setNewBillAddr(String addr){
-      newBillAddress = addr;
-  }//setNewBillAddr
-  
-  public void setNewCCV(String newC){
-    newCCV = newC;
-  }//setNewCCV
-  
-  public void setNewName(String name){
-    newName= name;
-  }//setnewName
-  
-  public void setCCUsed(int index){
-    CCUsed = cC[index];
-  
-  public int addCCtoData(){
-    if(newCCV==null||newBillAddress==null||newCC==null||newName==null){
-        return 0;
-    }else{
-        //execute database add command in if; return 0 if failed 1 if successful
-        return 1;
-    }//else
+public class Orders {
+
+	int orderNum;
+	int customerId;
+	String shipDate;
+	String arrivalDate;
+	int price;
+	int itemsInOrder;
+	int quantity;
+	String conditionStat;
+	String dueDate;
+	String orderStatus;
+	
+	public Orders(int orderNum, int customerId, String shipDate, String arrivalDate, int price, int itemsInOrder,
+			int quantity, String conditionStat, String dueDate, String orderStatus) {
+		super();
+		this.orderNum = orderNum;
+		this.customerId = customerId;
+		this.shipDate = shipDate;
+		this.arrivalDate = arrivalDate;
+		this.price = price;
+		this.itemsInOrder = itemsInOrder;
+		this.quantity = quantity;
+		this.conditionStat = conditionStat;
+		this.dueDate = dueDate;
+		this.orderStatus = orderStatus;
+	}
+	
+	public int getOrderNum() {
+		return orderNum;
+	}
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
+	}
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	public String getShipDate() {
+		return shipDate;
+	}
+	public void setShipDate(String shipDate) {
+		this.shipDate = shipDate;
+	}
+	public String getArrivalDate() {
+		return arrivalDate;
+	}
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getItemsInOrder() {
+		return itemsInOrder;
+	}
+	public void setItemsInOrder(int itemsInOrder) {
+		this.itemsInOrder = itemsInOrder;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public String getConditionStat() {
+		return conditionStat;
+	}
+	public void setConditionStat(String conditionStat) {
+		this.conditionStat = conditionStat;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	
 }
