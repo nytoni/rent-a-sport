@@ -38,6 +38,8 @@ public class AccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String userIdString = request.getParameter("userId");
+		int userId = Integer.parseInt(userIdString);
 		String customerIdString = request.getParameter("userId2");
 		System.out.println("hi5");
 		System.out.println(customerIdString);
@@ -53,6 +55,10 @@ public class AccountServlet extends HttpServlet {
 		System.out.println("INT : "+customerId);
 		
 		HashMap<String, Object> data = EditAccountLogicImpl.changeCreditCardInfo(customerId,checkoutNameId, billAddressId,shippingAddressId,creditCardNumber,expireDate,securityCode);
+		
+		
+		User currentUser = UserLogicImpl.maintainUser(userId);
+		data.add("currentUser", currentUser);
 		
 		String path = this.getServletContext().getRealPath("/WEB-INF/template/");		
 		Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
