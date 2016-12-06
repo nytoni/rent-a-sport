@@ -67,10 +67,12 @@ public class reviewOrdersServlet extends HttpServlet {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
 	
 		cfg.setLogTemplateExceptions(false);
+		User currentUser = UserLogicImpl.maintainUser(userId);
 
 		if(iTAI)
 		{
 			HashMap<String, Object> data = ProduceCartLogicImpl.produceCartPage(userId);
+			data.add("currentUser", currentUser);
 			Template template = cfg.getTemplate("reviewOrder.ftl");
 			Writer out = new OutputStreamWriter(response.getOutputStream());
 			try {
@@ -81,6 +83,7 @@ public class reviewOrdersServlet extends HttpServlet {
 		}
 		else{
 			HashMap<String,Object> data = new HashMap();
+			data.add("currentUser", currentUser);
 			data.put("userId", userId);
 			Template template = cfg.getTemplate("noOrder.ftl");
 			Writer out = new OutputStreamWriter(response.getOutputStream());
