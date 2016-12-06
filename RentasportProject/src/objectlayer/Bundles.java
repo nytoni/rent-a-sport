@@ -22,7 +22,7 @@ public class Bundles {
 		price_mnth=30;
 		price_3mnth=40;
 		price_6mnth=50;
-		imagePath="./path";
+		imagePath="http://media.staps.nantes.free.fr/L3EM_G1/David/res/L-equipement-d-un-joueur.jpg";
 		
 	}
 	
@@ -66,7 +66,22 @@ public class Bundles {
 		return price_6mnth;
 	}
 	
+	public String getImagePath()
+	{
+		return imagePath;
+	}
 	
-	
+	public void setBundleName(String bndle)
+	{
+		this.bundleName= bndle;
+	}
+	public void setItems(String itm)
+	{
+		this.items= itm;
+	}
+	public void setImagePath(String img)
+	{
+		this.imagePath= img;
+	}
 	
 }
