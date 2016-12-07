@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Review Order</title>
+    <link rel="stylesheet" href="./menu.css">
+    <script>
+       function message(){
+        alert("Thank you for making a purchase with Rent-A-Sport! An email confirmation was sent.");   
+       }
+    </script>
+</head>
+<body>
+<ul id="menu">
+  <li><a href="./login.html">Login</a></li>
+  <li><a href="./registration.html">Register</a></li>  
+  <li><a href="./myAccount.html">My Account</a></li>
+  <li><a href="./myCart.ftl">My Cart</a></li>
+  <li><a href="./faq.html">FAQs</a></li>
+    <li><a href="./browseBundle.ftl">Browse Bundles</a></li>
+</ul>             
+ 
+<h1>Review Order</h1>
+<p></p> 
+    
+<form action="AccountServlet">
+
+    <fieldset>
+        <legend>Shipping</legend>
+            <label>Name: ${name}</label>
+            <br/>
+            <label>Address: ${shipping}</label>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Payment</legend>
+            <label>Name: ${name}</label>
+            <br/>
+            <label>Billing Address: ${billing}</label>
+            <br/>
+            <label>Credit Card Number: ${cardNum}</label> 
+             <br/>
+    </fieldset>
+
+    <fieldset>
+        <legend>Items</legend>
+           
+    </fieldset>
+    
+   <p>Total: $ </p>
+
+<input type="Submit" value="Checkout" onclick="message();">
+
+
+</form>
+    
+</body>
+</html>
