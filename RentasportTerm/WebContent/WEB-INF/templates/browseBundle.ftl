@@ -17,7 +17,7 @@
 			</li>
 		 </form> 
 		
-		<li><a href="#">My Cart</a></li>
+		<li><a href="./CartServlet?userId=${currentUser.userId?c}">My Cart</a></li>
 		
 		<form id="cart-form" action="CartServlet" method="post">
 			<li onclick="document.forms['cart-form'].submit();">My Cart
