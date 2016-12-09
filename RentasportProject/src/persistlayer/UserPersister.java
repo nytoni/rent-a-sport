@@ -70,7 +70,7 @@ public class UserPersister {
 	 return DbAccessImpl.retrieve(con, idQuery);
  }//getCartInfo
  
-	return shipping address, billing address, cardnumber and expiration date from account with certain userId
+	//return shipping address, billing address, cardnumber and expiration date from account with certain userId
  public static ResultSet getOrderPageInfo(int userId){
 	 String idQuery ="select shippingAddr, billingAddr, cardNum, expirationDate from account where customerId='"+userId+"';";
 	 return DbAccessImpl.retrieve(con, idQuery);
