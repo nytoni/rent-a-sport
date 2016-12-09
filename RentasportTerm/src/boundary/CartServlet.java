@@ -1,5 +1,6 @@
 package boundary;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ import objectlayer.Items;
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String templateDir = "/WebContent";
+	public int userIdSaved;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,13 +43,13 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		userIdSaved=Integer.parseInt(request.getParameter("userId"));
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		//if checkout page says go to order page load freemarker for order page a redirect there
 		if(request.getParameter("submitOrder")!=null){
 			//call sql to add order to orders table and redirect to home page
 			ArrayList<Items> myList = CartLogicImpl.generateList(Integer.parseInt(request.getParameter("userId")));
-			//this finds out total items in cart and totprice to display for cart
 			int total = myList.size();
 			int totPrice=0;
 			for(int i = 0; i<total; i++){
@@ -61,36 +64,39 @@ public class CartServlet extends HttpServlet {
 			response.getWriter().append("Served at: ").append(request.getContextPath());
 			
 			PrintWriter out = response.getWriter( );
-				Configuration cfg;
-				cfg = new Configuration(Configuration.VERSION_2_3_25);
-		     
-		        cfg.setDefaultEncoding("UTF-8");
-		        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		        cfg.setLogTemplateExceptions(false);
-		        cfg.setClassForTemplateLoading(this.getClass(),"");
+				
+				String path = this.getServletContext().getRealPath("/WEB-INF/templates/");
+				Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
+				cfg.setDirectoryForTemplateLoading(new File(path));
 			
-		        log("cart being generated");
+				cfg.setDefaultEncoding("UTF-8");
+
+				cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+			
+				cfg.setLogTemplateExceptions(false);
 				try{
-					Template template = cfg.getTemplate("checkoutReview.html");
+					Template template = cfg.getTemplate("checkoutReview.ftl");
+					response.setContentType("text/html");
 					HashMap<String, Object> data = new HashMap<String, Object>();
 					ArrayList<Items> myList = CartLogicImpl.generateList(Integer.parseInt(request.getParameter("userId")));
 				
 					data.put("items", myList);
 				
-					//generate total number of items and total price
+				
 					int total = myList.size();
 					int totPrice=0;
 					for(int i = 0; i<total; i++){
 						totPrice += myList.get(i).getPrice();
 					
 					}//for
-					//place all required fields into freemarker
 					String[] otherInfo = CartLogicImpl.generateOrderInfo(Integer.parseInt(request.getParameter("userId")));
 					data.put("names", request.getParameter("name"));
 					data.put("sa", otherInfo[0]);
 					data.put("ba", otherInfo[1]);
 					data.put("cc", otherInfo[2]);
-					data.put("ed", otherInfo[3]);					
+					data.put("ed", otherInfo[3]);
+					
+					
 					data.put("totalPrice", totPrice);
 					data.put("totalItems", total);
 					template.process(data, out);
@@ -104,19 +110,20 @@ public class CartServlet extends HttpServlet {
 			response.getWriter().append("Served at: ").append(request.getContextPath());
 			
 			PrintWriter out = response.getWriter( );
-				Configuration cfg;
-				cfg = new Configuration(Configuration.VERSION_2_3_25);
-		      
-		        cfg.setDefaultEncoding("UTF-8");
-		        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		        cfg.setLogTemplateExceptions(false);
-		        cfg.setClassForTemplateLoading(this.getClass(),"");
-			
+			String path = this.getServletContext().getRealPath("/WEB-INF/templates/");
+			Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
+			cfg.setDirectoryForTemplateLoading(new File(path));
+		
+			cfg.setDefaultEncoding("UTF-8");
+
+			cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+		
+			cfg.setLogTemplateExceptions(false);
 			//log("name:"+request.getParameter("name"));
-			//populate string array to store server info for checkout page
+			
 			String[] creditCardNum = CartLogicImpl.getCheckouts(request.getParameter("userId"));
 			try{
-				 Template template = cfg.getTemplate("checkout.html");
+				 Template template = cfg.getTemplate("checkout.ftl");
 				HashMap<String, Object> data = new HashMap<String, Object>();
 				 data.put("cc", creditCardNum[0]);
 				 data.put("addr", creditCardNum[1]);
@@ -129,7 +136,7 @@ public class CartServlet extends HttpServlet {
 		}else{
 			//generate or regenerate cart depending on context its called in
 			response.getWriter().append("Served at: ").append(request.getContextPath());
-			//check and see if updating cart in sql is required, if so execute
+			//check and see if updating cart in sql is required
 			if(request.getParameter("camping")!=null){
 				CartLogicImpl.removeBundleFromCart("camping", Integer.parseInt(request.getParameter("userId")));
 			}//if
@@ -152,23 +159,32 @@ public class CartServlet extends HttpServlet {
 			
 			//after update is checked for and executed generate cart
 			PrintWriter out = response.getWriter( );
-				Configuration cfg;
-				cfg = new Configuration(Configuration.VERSION_2_3_25);
+				//Configuration cfg;
+				/*cfg = new Configuration(Configuration.VERSION_2_3_25);
 		      //  cfg.setDirectoryForTemplateLoading(new File("/project3/WebContent/templates"));
 		        cfg.setDefaultEncoding("UTF-8");
 		        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		        cfg.setLogTemplateExceptions(false);
-		        cfg.setClassForTemplateLoading(this.getClass(),"");
+		        cfg.setServletContextForTemplateLoading(getServletContext(), templateDir);
+			*/
+				String path = this.getServletContext().getRealPath("/WEB-INF/templates/");
+				Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
+				cfg.setDirectoryForTemplateLoading(new File(path));
 			
+				cfg.setDefaultEncoding("UTF-8");
+
+				cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+			
+				cfg.setLogTemplateExceptions(false);
 			log("cart being generated");
 			try{
 				 Template template = cfg.getTemplate("myCart.ftl");
 				HashMap<String, Object> data = new HashMap<String, Object>();
 				ArrayList<Items> myList = CartLogicImpl.generateList(Integer.parseInt(request.getParameter("userId")));
-				//put list of items into hashmap
+				
 				data.put("items", myList);
 				
-				//create total number of items and total price for cart
+				
 				int total = myList.size();
 				int totPrice=0;
 				for(int i = 0; i<total; i++){
