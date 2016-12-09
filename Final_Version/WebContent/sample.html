@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>2
+</head>
+<body>
+<center>
+<h1>Logfdghin</h1>
+<p>Enter actors, directors, or movies</p>
+<form action="BundlesServlet">
+
+Username: <input type="text" name="username"> <br/>
+Password: <input type="password" name="password"> <br/>
+<input type="Submit">
+
+</form>
+
+<form action="BundlesServlet" id = "football"> 
+  <div class="column">
+      <img src = "https://qmkit.co.uk/729/425.jpg" style = "width:100%" onClick = "document.forms['hi-form'].submit();">
+      <input type="hidden" name="action" value="camping">
+      <p>Camping</p>
+  </div>
+  <input type = "hidden" name = "userId" value = "${currentUser.userId}">
+</form> 
+
+</center>
+</body>
+</html>
