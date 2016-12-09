@@ -7,7 +7,7 @@
   <li><a href="./login.html">Login</a></li>
   <li><a href="./registration.html">Register</a></li>  
   <li><a href="./myAccount.html">My Account</a></li>
-  <li><a href="./myCart.html">My Cart</a></li>
+  <li><a href="#">My Cart</a></li>
    <li><a href="./login.html">logout</a></li>
   <li><a href="./faq.html">FAQs</a></li>
 </ul>         
