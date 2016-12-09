@@ -25,7 +25,7 @@
   <li><a href="./login.html">Logout</a></li>
   <li><a href="./registration.html">Register</a></li>  
   <li><a href="myAccount.html">My Account</a></li>
-  <li><a href="./myCart.ftl">My Cart</a></li>
+  <li><a href="#">My Cart</a></li>
   <li><a href="faq.html">FAQs</a></li>
   <li><a href="./browseBundle.ftl">Browse Bundles</a></li>
 </ul>         
